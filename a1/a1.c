@@ -160,7 +160,7 @@ void permCheckRecursive(const char *path, const char *permission)
                 if(strcmp(permission, a) == 0)
                     printf("%s\n", fullPath);
                 free(a);
-                listRec(fullPath);
+                permCheckRecursive(fullPath,permission);
             }
             else
             {
@@ -428,7 +428,7 @@ int main(int argc, char **argv){
                     char *perm = malloc(strlen(argv[3])+1);
                     strcpy(str, argv[4]+5);
                     strcpy(perm, argv[3]+12);
-                    permCheck(str, perm);
+                    permCheckRecursive(str, perm);
                     free(perm);
                     free(str);
                 }
